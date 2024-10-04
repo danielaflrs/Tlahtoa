@@ -11,7 +11,7 @@
 - **Secure Reporting**: Protect user anonymity and confidentiality while reporting incidents.
 - **Resource Access**: Connect users with local support services and resources.
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+  ## Tech Stack
   - HTML
   - CSS
   - JavaScript
