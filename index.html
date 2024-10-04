@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tlahtoa - Plataforma Feminista</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Estilos básicos y responsivos */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0); /* Un fondo semitransparente para mejor visibilidad */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      padding-left: 30px;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li:last-child {
+      margin-right: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 8px 16px;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: #79656f;
+      border-radius: 5px;
+    }
+
+    .logo img {
+      width: 70px;
+    }
+
+    .video-background {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .welcome-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+    }
+
+    .welcome-text h1 {
+      font-size: 48px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .welcome-text p {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .welcome-text button {
+      background-color: #000000;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .welcome-text button:hover {
+      background-color: #79656f;
+    }
+
+    /* Secciones de la página */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    section:nth-child(even) {
+      background-color: #ffffff;
+    }
+
+    section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #000000;
+    }
+
+    section p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #555555;
+    }
+
+    section button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #79656f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    section button:hover {
+      background-color: #5a4b51;
+    }
+
+    /* Interactividad */
+    section {
+      transition: all 0.3s ease-in-out;
+    }
+
+    section:hover {
+      transform: scale(1.02);
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+      .welcome-text h1 {
+        font-size: 32px;
+      }
+
+      .welcome-text p {
+        font-size: 18px;
+      }
+
+      .welcome-text button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        display: none;
+        width: 100%;
+        padding-left: 0;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 12px;
+      }
+
+      nav ul.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Encabezado con el logo y el menú -->
+  <header>
+    <div class="logo">
+      <img src="media/5B22CA34-0512-4B39-8592-DA753EFE9B2B-removebg-preview.png" alt="Logo de Tlahtoa">
+    </div>
+    <nav>
+      <ul id="menu">
+        <li><a href="#report-form">Denunciar</a></li>
+        <li><a href="#violence-test">Test de Violencia</a></li>
+        <li><a href="#resources">Recursos</a></li>
+        <li><a href="#stories">Historias</a></li>
+        <li><a href="#articles">Artículos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sección con video de fondo y bienvenida -->
+  <div class="video-background">
+    <video autoplay muted loop id="background-video">
+      <source src="media/intro.mp4" type="video/mp4">
+      Tu navegador no soporta videos HTML5.
+    </video>
+    <div class="welcome-text">
+      <h1>Tlahtoa: Voz contra la violencia</h1>
+      <p>Plataforma feminista inclusiva para reportar violencia.</p>
+      <button onclick="goToForm()">Denuncia ya</button>
+    </div>
+  </div>
+
+  <!-- Sección: Formulario de denuncia -->
+  <section id="report-form">
+    <h2>Denuncia un caso de violencia</h2>
+    <p>Si has sido víctima o testigo de un acto de violencia, puedes denunciar de manera anónima y segura en nuestra plataforma. Ayúdanos a hacer justicia y proteger a más personas.</p>
+    <button>Ir al formulario</button>
+  </section>
+
+  <!-- Sección: Test de violencia -->
+  <section id="violence-test">
+    <h2>Test de Violencia</h2>
+    <p>¿Te preguntas si lo que estás viviendo es violencia? Realiza nuestro test para identificar las señales de alerta y conocer más sobre cómo actuar en caso de violencia.</p>
+    <button>Realizar el test</button>
+  </section>
+
+  <!-- Sección: Recursos -->
+  <section id="resources">
+    <h2>Recursos para apoyo</h2>
+    <p>Accede a una lista de recursos, incluyendo líneas de ayuda, refugios, y organizaciones que brindan apoyo en casos de violencia de género y derechos humanos.</p>
+    <button>Ver recursos</button>
+  </section>
+
+  <!-- Sección: Historias de supervivencia -->
+  <section id="stories">
+    <h2>Historias de Supervivencia</h2>
+    <p>Conoce historias de personas valientes que han sobrevivido a la violencia y hoy son voces poderosas para el cambio. Comparte tu historia y ayuda a inspirar a otros.</p>
+    <button>Leer historias</button>
+  </section>
+
+  <!-- Sección: Artículos -->
+  <section id="articles">
+    <h2>Artículos informativos</h2>
+    <p>Lee nuestros artículos sobre temas como la violencia de género, derechos humanos, y feminismo. Mantente informado y conoce más sobre cómo puedes apoyar.</p>
+    <button>Leer artículos</button>
+  </section>
+
+  <!-- Script para desplazarse al formulario -->
+  <script>
+    // Desplazar al formulario de denuncia
+    function goToForm() {
+      window.location.href = '#report-form';
+    }
+
+    // Aparecer secciones con animación cuando el usuario hace scroll
+    window.addEventListener('scroll', function() {
+      let sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        let rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          section.style.opacity = '1';
+          section.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    // Mostrar u ocultar el menú en pantallas pequeñas
+    const menu = document.getElementById('menu');
+    const toggleMenu = () => {
+      menu.classList.toggle('active');
+    };
+
+    // Validación básica de un formulario (puedes agregar esta lógica al formulario de denuncia)
+    const validateForm = () => {
+      const form = document.getElementById('report-form');
+      const nameInput = form.querySelector('input[name="name"]');
+      const emailInput = form.querySelector('input[name="email"]');
+      const messageInput = form.querySelector('textarea[name="message"]');
+      
+      if (!nameInput.value || !emailInput.value || !messageInput.value) {
+        alert('Por favor, completa todos los campos.');
+        return false;
+      }
+      return true;
+    };
+  </script>
+</body>
+</html>
